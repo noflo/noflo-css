@@ -1,0 +1,24 @@
+{
+  "name": "noflo-css",
+  "description": "Cascading Style Sheets components for NoFlo",
+  "author": "Henri Bergius <henri.bergius@iki.fi>",
+  "repo": "noflo/noflo-css",
+  "version": "0.0.1",
+  "keywords": [
+  ],
+  "dependencies": {
+    "noflo/noflo": "*"
+  },
+  "scripts": [
+    "components/MoveElement.coffee",
+    "index.js"
+  ],
+  "json": [
+    "component.json"
+  ],
+  "noflo": {
+    "components": {
+      "MoveElement": "components/MoveElement.coffee"
+    }
+  }
+}
