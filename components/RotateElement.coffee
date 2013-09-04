@@ -15,7 +15,7 @@ class RotateElement extends noflo.Component
         @setRotation @element, percent
 
   setRotation: (element, percent) ->
-    degrees = 360 * percent % 360;
+    degrees = 360 * percent % 360
     @setVendor element, "transform", "rotate(#{degrees}deg)"
 
   setVendor: (element, property, value) ->
