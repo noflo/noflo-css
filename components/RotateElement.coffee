@@ -7,15 +7,19 @@ class RotateElement extends noflo.Component
     @inPorts =
       element: new noflo.Port 'object'
       percent: new noflo.Port 'number'
+      degrees: new noflo.Port 'number'
 
     @inPorts.element.on 'data', (element) =>
       @element = element
     @inPorts.percent.on 'data', (percent) =>
-      if @element
-        @setRotation @element, percent
+      return unless @element
+      degrees = 360 * percent % 360
+      @setRotation @element, degrees
+    @inPorts.degrees.on 'data', (degrees) =>
+      return unless @element
+      @setRotation @element, degrees
 
-  setRotation: (element, percent) ->
-    degrees = 360 * percent % 360
+  setRotation: (element, degrees) ->
     @setVendor element, "transform", "rotate(#{degrees}deg)"
 
   setVendor: (element, property, value) ->
