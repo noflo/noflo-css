@@ -12,6 +12,7 @@
   "scripts": [
     "components/MoveElement.coffee",
     "components/RotateElement.coffee",
+    "components/SetElementTop.coffee",
     "index.js"
   ],
   "json": [
@@ -20,7 +21,8 @@
   "noflo": {
     "components": {
       "MoveElement": "components/MoveElement.coffee",
-      "RotateElement": "components/RotateElement.coffee"
+      "RotateElement": "components/RotateElement.coffee",
+      "SetElementTop": "components/SetElementTop.coffee"
     }
   }
 }
