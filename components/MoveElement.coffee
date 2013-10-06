@@ -2,6 +2,7 @@ noflo = require 'noflo'
 
 class MoveElement extends noflo.Component
   description: 'Change the coordinates of a DOM element'
+  icon: 'move'
   constructor: ->
     @element = null
     @inPorts =

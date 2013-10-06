@@ -19,6 +19,7 @@
     "component.json"
   ],
   "noflo": {
+    "icon": "css3",
     "components": {
       "MoveElement": "components/MoveElement.coffee",
       "RotateElement": "components/RotateElement.coffee",

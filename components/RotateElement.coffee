@@ -2,6 +2,7 @@ noflo = require 'noflo'
 
 class RotateElement extends noflo.Component
   description: 'Change the coordinates of a DOM element'
+  icon: 'rotate-right'
   constructor: ->
     @element = null
     @inPorts =
