@@ -2,7 +2,7 @@ noflo = require 'noflo'
 
 class SetElementTop extends noflo.Component
   description: 'Set element\'s CSS top'
-  icon: 'resize-vertical'
+  icon: 'arrows-v'
   constructor: ->
     @element = null
     @inPorts =
