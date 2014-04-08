@@ -11,6 +11,7 @@
   },
   "scripts": [
     "components/MoveElement.coffee",
+    "components/ResizeElement.coffee",
     "components/RotateElement.coffee",
     "components/SetElementTop.coffee",
     "index.js"
@@ -22,6 +23,7 @@
     "icon": "css3",
     "components": {
       "MoveElement": "components/MoveElement.coffee",
+      "ResizeElement": "components/ResizeElement.coffee",
       "RotateElement": "components/RotateElement.coffee",
       "SetElementTop": "components/SetElementTop.coffee"
     }
