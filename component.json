@@ -4,8 +4,7 @@
   "author": "Henri Bergius <henri.bergius@iki.fi>",
   "repo": "noflo/noflo-css",
   "version": "0.0.1",
-  "keywords": [
-  ],
+  "keywords": [],
   "dependencies": {
     "noflo/noflo": "*"
   },
