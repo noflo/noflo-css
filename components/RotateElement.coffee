@@ -5,10 +5,14 @@ class RotateElement extends noflo.Component
   icon: 'rotate-right'
   constructor: ->
     @element = null
+    # GPU accelerate by default
+    @gpuAccelerate = 'translateZ(0px) translate3d(0px, 0px, 0px)'
     @inPorts =
       element: new noflo.Port 'object'
       percent: new noflo.Port 'number'
       degrees: new noflo.Port 'number'
+      # Pass `false` to turn off GPU acceleration
+      gpu: new noflo.Port 'boolean'
 
     @inPorts.element.on 'data', (element) =>
       @element = element
@@ -19,9 +23,11 @@ class RotateElement extends noflo.Component
     @inPorts.degrees.on 'data', (degrees) =>
       return unless @element
       @setRotation @element, degrees
+    @inPorts.gpu.on 'data', (gpu) =>
+      @gpuAccelerate = if gpu then 'translateZ(0px) translate3d(0px, 0px, 0px)' else ''
 
   setRotation: (element, degrees) ->
-    @setVendor element, "transform", "rotate(#{degrees}deg)"
+    @setVendor element, "transform", "rotate(#{degrees}deg) #{@gpuAccelerate}"
 
   setVendor: (element, property, value) ->
     propertyCap = property.charAt(0).toUpperCase() + property.substr(1)
