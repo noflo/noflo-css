@@ -24,7 +24,10 @@ class RotateElement extends noflo.Component
       return unless @element
       @setRotation @element, degrees
     @inPorts.gpu.on 'data', (gpu) =>
-      @gpuAccelerate = if gpu then 'translateZ(0px) translate3d(0px, 0px, 0px)' else ''
+      @gpuAccelerate =
+        if   gpu
+        then 'translateZ(0px) translate3d(0px, 0px, 0px)'
+        else ''
 
   setRotation: (element, degrees) ->
     @setVendor element, "transform", "rotate(#{degrees}deg) #{@gpuAccelerate}"
