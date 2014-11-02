@@ -13,7 +13,8 @@
     "components/ResizeElement.coffee",
     "components/RotateElement.coffee",
     "components/SetElementTop.coffee",
-    "index.js"
+    "index.js",
+    "components/SetBackgroundImage.coffee"
   ],
   "json": [
     "component.json"
@@ -24,6 +25,7 @@
       "MoveElement": "components/MoveElement.coffee",
       "ResizeElement": "components/ResizeElement.coffee",
       "RotateElement": "components/RotateElement.coffee",
+      "SetBackgroundImage": "components/SetBackgroundImage.coffee",
       "SetElementTop": "components/SetElementTop.coffee"
     }
   }
