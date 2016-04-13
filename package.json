@@ -27,7 +27,7 @@
     "grunt-contrib-uglify": "~0.6.0",
     "grunt-contrib-watch": "~0.6.1",
     "grunt-noflo-manifest": "^0.1.5",
-    "grunt-noflo-browser": "^0.1.2"
+    "grunt-noflo-browser": "^0.1.17"
   },
   "keywords": [],
   "scripts": {
