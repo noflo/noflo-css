@@ -13,31 +13,22 @@
   <body>
     <div id="mocha"></div>
     <div id="fixtures">
-      <div class="getelement">Foo</div>
-      <div class="listentouch">
-        <div class="target">Target</div>
-        <div class="other">Other</div>
-      </div>
-      <div class="listendrag">
-        <div class="target">Target</div>
-        <div class="other">Other</div>
-      </div>
-      <div class="listenmouse">
-        <div class="target">Target</div>
-        <div class="other">Other</div>
+      <div id="setelementtop">
+        Hello world
       </div>
     </div>
     <script src="../browser/noflo-css.js"></script>
-    <script src="http://chaijs.com/chai.js"></script>
+    <script src="../node_modules/chai/chai.js"></script>
     <script src="../node_modules/mocha/mocha.js"></script>
-    <script>mocha.setup('bdd');</script>
     <script>
-      if (window.mochaPhantomJS) {
-        mochaPhantomJS.run();
-      } else {
-        mocha.checkLeaks();
-        mocha.run();
+      if (window.initMochaPhantomJS) {
+        window.initMochaPhantomJS();
       }
+      mocha.setup('bdd');
+    </script>
+    <script src="./SetElementTop.js"></script>
+    <script>
+      mocha.run();
     </script>
   </body>
 </html>
