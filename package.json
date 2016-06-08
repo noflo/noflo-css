@@ -11,6 +11,9 @@
     "url": "git://github.com/noflo/noflo-css.git"
   },
   "license": "MIT",
+  "dependencies": {
+    "noflo": "0.x >= 0.5",
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-coffee": "~1.0.0",
