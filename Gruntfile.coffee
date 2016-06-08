@@ -14,7 +14,7 @@ module.exports = ->
     noflo_browser:
       build:
         files:
-          'browser/noflo-dom.js': ['component.json']
+          'browser/noflo-css.js': ['component.json']
 
     # CoffeeScript compilation
     coffee:
@@ -33,7 +33,7 @@ module.exports = ->
         report: 'min'
       noflo:
         files:
-          './browser/noflo-dom.min.js': ['./browser/noflo-dom.js']
+          './browser/noflo-css.min.js': ['./browser/noflo-css.js']
 
     # Automated recompilation and testing when developing
     watch:
