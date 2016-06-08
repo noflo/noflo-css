@@ -26,7 +26,7 @@ describe 'SetElementTop component', ->
       element.send el
       top.send 10
       setTimeout ->
-        chai.expect(element.style.position).to.equal 'absolute'
-        chai.expect(element.style.top).to.equal '10px'
+        chai.expect(el.style.position).to.equal 'absolute'
+        chai.expect(el.style.top).to.equal '10px'
         done()
       , 1
