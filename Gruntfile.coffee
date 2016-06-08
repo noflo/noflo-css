@@ -44,7 +44,8 @@ module.exports = ->
     mocha_phantomjs:
       options:
         output: 'spec/result.xml'
-        reporter: 'dot'
+        reporter: 'spec'
+        failWithOutput: true
       all: ['spec/runner.html']
 
     # Coding standards
