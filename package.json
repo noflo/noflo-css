@@ -22,12 +22,14 @@
     "chai": "~3.5.0",
     "mocha": "~2.5.3",
     "grunt-mocha-phantomjs": "~3.0.0",
-    "grunt-contrib-uglify": "~1.0.1",
+    "grunt-contrib-uglify": "~2.0.0",
     "grunt-contrib-watch": "~1.0.0",
     "grunt-noflo-manifest": "^0.1.5",
     "grunt-noflo-browser": "^0.1.17"
   },
-  "keywords": ["noflo"],
+  "keywords": [
+    "noflo"
+  ],
   "scripts": {
     "test": "grunt test"
   },
