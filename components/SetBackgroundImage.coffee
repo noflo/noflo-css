@@ -1,5 +1,7 @@
 noflo = require 'noflo'
 
+# @runtime noflo-browser
+
 class SetBackgroundImage extends noflo.Component
   description: 'Set element\'s CSS background image'
   icon: 'picture'

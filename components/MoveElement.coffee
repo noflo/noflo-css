@@ -1,5 +1,7 @@
 noflo = require 'noflo'
 
+# @runtime noflo-browser
+
 class MoveElement extends noflo.Component
   description: 'Change the coordinates of a DOM element'
   icon: 'arrows'

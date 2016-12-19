@@ -1,5 +1,7 @@
 noflo = require 'noflo'
 
+# @runtime noflo-browser
+
 class RotateElement extends noflo.Component
   description: 'Change the coordinates of a DOM element'
   icon: 'rotate-right'

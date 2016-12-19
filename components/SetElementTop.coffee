@@ -1,5 +1,7 @@
 noflo = require 'noflo'
 
+# @runtime noflo-browser
+
 class SetElementTop extends noflo.Component
   description: 'Set element\'s CSS top'
   icon: 'arrows-v'

@@ -1,5 +1,7 @@
 noflo = require 'noflo'
 
+# @runtime noflo-browser
+
 class ResizeElement extends noflo.Component
   description: 'Change the size of a DOM element'
   icon: 'arrows'

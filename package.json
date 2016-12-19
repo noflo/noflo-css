@@ -35,13 +35,5 @@
   ],
   "scripts": {
     "test": "grunt test"
-  },
-  "noflo": {
-    "components": {
-      "MoveElement": "components/MoveElement.coffee",
-      "RotateElement": "components/RotateElement.coffee",
-      "SetBackgroundImage": "components/SetBackgroundImage.coffee",
-      "SetElementTop": "components/SetElementTop.coffee"
-    }
   }
 }
