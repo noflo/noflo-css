@@ -10,6 +10,7 @@ class SetElementTop extends noflo.Component
     @inPorts =
       element: new noflo.Port 'object'
       top: new noflo.Port 'number'
+    @outPorts = {}
     
     @inPorts.element.on 'data', (element) =>
       @element = element

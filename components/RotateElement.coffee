@@ -15,6 +15,7 @@ class RotateElement extends noflo.Component
       degrees: new noflo.Port 'number'
       # Pass `false` to turn off GPU acceleration
       gpu: new noflo.Port 'boolean'
+    @outPorts = {}
 
     @inPorts.element.on 'data', (element) =>
       @element = element

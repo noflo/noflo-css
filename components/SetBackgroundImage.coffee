@@ -10,6 +10,7 @@ class SetBackgroundImage extends noflo.Component
     @inPorts =
       element: new noflo.Port 'object'
       imagedata: new noflo.Port 'string'
+    @outPorts = {}
     
     @inPorts.element.on 'data', (element) =>
       @element = element

@@ -12,6 +12,7 @@ class ResizeElement extends noflo.Component
       size: new noflo.Port 'object'
       width: new noflo.Port 'number'
       height: new noflo.Port 'number'
+    @outPorts = {}
 
     @inPorts.element.on 'data', (element) =>
       @element = element

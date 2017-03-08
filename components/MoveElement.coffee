@@ -13,6 +13,7 @@ class MoveElement extends noflo.Component
       x: new noflo.Port 'number'
       y: new noflo.Port 'number'
       z: new noflo.Port 'number'
+    @outPorts = {}
 
     @inPorts.element.on 'data', (element) =>
       @element = element
