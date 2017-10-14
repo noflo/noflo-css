@@ -2,21 +2,21 @@ noflo = require 'noflo'
 
 # @runtime noflo-browser
 
-class SetBackgroundImage extends noflo.Component
-  description: 'Set element\'s CSS background image'
-  icon: 'picture'
-  constructor: ->
-    @element = null
-    @inPorts =
-      element: new noflo.Port 'object'
-      imagedata: new noflo.Port 'string'
-    @outPorts = {}
-    
-    @inPorts.element.on 'data', (element) =>
-      @element = element
+exports.getComponent = ->
+  c = new noflo.Component
+  c.description = 'Set element\'s CSS background image'
+  c.icon = 'picture'
+  c.inPorts.add 'element',
+    datatype: 'object'
+    control: true
+  c.inPorts.add 'imagedata',
+    datatype: 'string'
+  c.outPorts.add 'out',
+    datatype: 'bang'
 
-    @inPorts.imagedata.on 'data', (imagedata) =>
-      return unless @element
-      @element.style.background = 'url(' + imagedata + ') no-repeat center'
-
-exports.getComponent = -> new SetBackgroundImage
+  c.process (input, output) ->
+    return unless input.hasData 'element', 'imagedata'
+    [element, imagedata] = input.getData 'element', 'imagedata'
+    element.style.background = 'url(' + imagedata + ') no-repeat center'
+    output.sendDone
+      out: true

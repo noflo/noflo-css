@@ -13,6 +13,12 @@
   <body>
     <div id="mocha"></div>
     <div id="fixtures">
+      <div id="moveelement">
+        Hello world
+      </div>
+      <div id="resizeelement">
+        Hello world
+      </div>
       <div id="setelementtop">
         Hello world
       </div>
@@ -26,6 +32,8 @@
       }
       mocha.setup('bdd');
     </script>
+    <script src="./MoveElement.js"></script>
+    <script src="./ResizeElement.js"></script>
     <script src="./SetElementTop.js"></script>
     <script>
       mocha.run();
