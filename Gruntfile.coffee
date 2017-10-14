@@ -7,14 +7,13 @@ module.exports = ->
     noflo_manifest:
       update:
         files:
-          'component.json': ['graphs/*', 'components/*']
           'package.json': ['graphs/*', 'components/*']
 
     # Browser build of NoFlo
     noflo_browser:
       build:
         files:
-          'browser/noflo-css.js': ['component.json']
+          'browser/noflo-css.js': ['package.json']
 
     # CoffeeScript compilation
     coffee:
