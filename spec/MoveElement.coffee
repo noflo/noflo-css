@@ -1,21 +1,21 @@
 noflo = require 'noflo'
 baseDir = 'noflo-css'
 
-describe 'SetElementTop component', ->
+describe 'MoveElement component', ->
   c = null
   element = null
-  top = null
+  point = null
   out = null
   before (done) ->
     @timeout 4000
     loader = new noflo.ComponentLoader baseDir
-    loader.load 'css/SetElementTop', (err, instance) ->
+    loader.load 'css/MoveElement', (err, instance) ->
       return done err if err
       c = instance
       element = noflo.internalSocket.createSocket()
       c.inPorts.element.attach element
-      top = noflo.internalSocket.createSocket()
-      c.inPorts.top.attach top
+      point = noflo.internalSocket.createSocket()
+      c.inPorts.point.attach point
       done()
   beforeEach ->
     out = noflo.internalSocket.createSocket()
@@ -26,12 +26,15 @@ describe 'SetElementTop component', ->
 
   describe 'receiving an element and value', ->
     it 'should update element properties', (done) ->
-      el = document.getElementById 'setelementtop'
+      el = document.getElementById 'moveelement'
       unless el
         return done new Error 'Fixture not available'
       out.on 'data', ->
         chai.expect(el.style.position).to.equal 'absolute'
-        chai.expect(el.style.top).to.equal '10px'
+        chai.expect(el.style.top).to.equal '20px'
+        chai.expect(el.style.left).to.equal '42px'
         done()
       element.send el
-      top.send 10
+      point.send
+        x: 42
+        y: 20

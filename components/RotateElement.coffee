@@ -2,45 +2,45 @@ noflo = require 'noflo'
 
 # @runtime noflo-browser
 
-class RotateElement extends noflo.Component
-  description: 'Change the coordinates of a DOM element'
-  icon: 'rotate-right'
-  constructor: ->
-    @element = null
-    # GPU accelerate by default
-    @gpuAccelerate = 'translateZ(0px) translate3d(0px, 0px, 0px)'
-    @inPorts =
-      element: new noflo.Port 'object'
-      percent: new noflo.Port 'number'
-      degrees: new noflo.Port 'number'
-      # Pass `false` to turn off GPU acceleration
-      gpu: new noflo.Port 'boolean'
-    @outPorts = {}
+setRotation = (element, degrees, gpu) ->
+  transform = "rotate(#{degrees}deg)"
+  if gpu
+    transform = "#{transform} translateZ(0px) translate3d(0px, 0px, 0px)"
+  element.style.transform = transform
 
-    @inPorts.element.on 'data', (element) =>
-      @element = element
-    @inPorts.percent.on 'data', (percent) =>
-      return unless @element
+exports.getComponent = ->
+  c = new noflo.Component
+  c.description = 'Change the coordinates of a DOM element'
+  c.icon = 'rotate-right'
+  c.inPorts.add 'element',
+    datatype: 'object'
+    control: true
+  c.inPorts.add 'percent',
+    datatype: 'number'
+  c.inPorts.add 'degrees',
+    datatype: 'number'
+  c.inPorts.add 'gpu',
+    datatype: 'boolean'
+    control: true
+    default: true
+    description: 'Whether to GPU-accelerate the rotation'
+  c.outPorts.add 'out',
+    datatype: 'bang'
+
+  c.process (input, output) ->
+    return unless input.hasData 'element'
+    if input.hasData 'percent'
+      [element, percent] = input.getData 'element', 'percent'
+      gpu = if input.hasData('gpu') then input.getData('gpu') else true
       degrees = 360 * percent % 360
-      @setRotation @element, degrees
-    @inPorts.degrees.on 'data', (degrees) =>
-      return unless @element
-      @setRotation @element, degrees
-    @inPorts.gpu.on 'data', (gpu) =>
-      @gpuAccelerate =
-        if   gpu
-        then 'translateZ(0px) translate3d(0px, 0px, 0px)'
-        else ''
-
-  setRotation: (element, degrees) ->
-    @setVendor element, "transform", "rotate(#{degrees}deg) #{@gpuAccelerate}"
-
-  setVendor: (element, property, value) ->
-    propertyCap = property.charAt(0).toUpperCase() + property.substr(1)
-    element.style["webkit" + propertyCap] = value
-    element.style["moz" + propertyCap] = value
-    element.style["ms" + propertyCap] = value
-    element.style["o" + propertyCap] = value
-    element.style[property] = value
-
-exports.getComponent = -> new RotateElement
+      setRotation element, degrees, gpu
+      output.sendDone
+        out: true
+      return
+    if input.hasData 'degrees'
+      [element, degrees] = input.getData 'element', 'degrees'
+      gpu = if input.hasData('gpu') then input.getData('gpu') else true
+      setRotation element, degrees, gpu
+      output.sendDone
+        out: true
+      return

@@ -1,21 +1,21 @@
 noflo = require 'noflo'
 baseDir = 'noflo-css'
 
-describe 'SetElementTop component', ->
+describe 'ResizeElement component', ->
   c = null
   element = null
-  top = null
+  size = null
   out = null
   before (done) ->
     @timeout 4000
     loader = new noflo.ComponentLoader baseDir
-    loader.load 'css/SetElementTop', (err, instance) ->
+    loader.load 'css/ResizeElement', (err, instance) ->
       return done err if err
       c = instance
       element = noflo.internalSocket.createSocket()
       c.inPorts.element.attach element
-      top = noflo.internalSocket.createSocket()
-      c.inPorts.top.attach top
+      size = noflo.internalSocket.createSocket()
+      c.inPorts.size.attach size
       done()
   beforeEach ->
     out = noflo.internalSocket.createSocket()
@@ -26,12 +26,15 @@ describe 'SetElementTop component', ->
 
   describe 'receiving an element and value', ->
     it 'should update element properties', (done) ->
-      el = document.getElementById 'setelementtop'
+      el = document.getElementById 'resizeelement'
       unless el
         return done new Error 'Fixture not available'
       out.on 'data', ->
         chai.expect(el.style.position).to.equal 'absolute'
-        chai.expect(el.style.top).to.equal '10px'
+        chai.expect(el.style.width).to.equal '20px'
+        chai.expect(el.style.height).to.equal '42px'
         done()
       element.send el
-      top.send 10
+      size.send
+        height: 42
+        width: 20
